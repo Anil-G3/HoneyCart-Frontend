@@ -1,3 +1,3 @@
-const API_BASE = 'http://localhost:9090';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:9090';
 
 export default API_BASE;
