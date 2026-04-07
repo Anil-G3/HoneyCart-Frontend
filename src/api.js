@@ -1,3 +1,10 @@
+import axios from 'axios';
+
 const API_BASE = 'https://honeycart-backend.onrender.com';
 
-export default API_BASE;
+const api = axios.create({
+  baseURL: API_BASE,
+  withCredentials: true 
+});
+
+export default api;
