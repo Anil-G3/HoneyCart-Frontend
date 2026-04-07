@@ -12,39 +12,41 @@ export default function LoginPage() {
   const authMessage = location.state?.message;
 
   const handleSignIn = async (e) => {
-    e.preventDefault();
-    setError(null);
+  e.preventDefault();
+  setError(null);
 
-    if (!username.trim() || !password.trim()) {
-      setError('Username and password are required');
-      return;
-    }
+  if (!username.trim() || !password.trim()) {
+    setError('Username and password are required');
+    return;
+  }
 
-    try {
-      const response = await fetch(`${API_BASE}/api/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ username, password }),
-      });
+  try {
+    const response = await fetch(`${API_BASE}/api/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ username, password }),
+    });
 
-      const data = await response.json();
+    const text = await response.text();
+    const data = text ? JSON.parse(text) : {};
 
-      if (response.ok) {
-        if (data.role === 'CUSTOMER') {
-          navigate('/categories');
-        } else if (data.role === 'ADMIN') {
-          setError('Admin can only login with Admin Login Page');
-        } else {
-          navigate('/');
-        }
+    if (response.ok) {
+      if (data.role === 'CUSTOMER') {
+        navigate('/categories');       
+      } else if (data.role === 'ADMIN') {
+        setError('Admin can only login with Admin Login Page'); 
+
       } else {
-        throw new Error(data.error || 'Something went wrong. Please try again.');
+        navigate('/');
       }
-    } catch (err) {
-      setError(err.message || 'Unexpected error occurred');
+    } else {
+      throw new Error(data.error || 'Something went wrong. Please try again.');
     }
-  };
+  } catch (err) {
+    setError(err.message || 'Unexpected error occurred');
+  }
+};
 
   return (
     <div className="page-layout">
