@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProfilePage from './ProfilePage';
+import API_BASE from './api';
 import './assets/styles.css';
 
 export function ProfileDropdown({ username }) {
@@ -12,7 +13,7 @@ export function ProfileDropdown({ username }) {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:9090/api/auth/logout', {
+      const response = await fetch(`${API_BASE}/api/auth/logout`, {
         method: 'POST',
         credentials: 'include',
       });
