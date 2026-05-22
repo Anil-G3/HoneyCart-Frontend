@@ -40,7 +40,7 @@ export default function ProtectedRoute({ children, requiredRole }) {
     if (requiredRole === 'ADMIN') {
       return <Navigate to="/admin" replace state={{ message }} />;
     }
-    return <Navigate to="/" replace state={{ message }} />;
+    return <Navigate to="/login" replace state={{ message }} />;
   }
 
   return children;

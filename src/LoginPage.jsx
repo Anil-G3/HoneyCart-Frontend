@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import API_BASE from './api';
 
@@ -9,7 +9,13 @@ export default function LoginPage() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const authMessage = location.state?.message;
+  useEffect(() => {
+    fetch(`${API_BASE}/api/auth/session`, { credentials: 'include' })
+      .then(res => { if (res.ok) navigate('/categories'); })
+      .catch(() => {});
+  }, []);
+
+const authMessage = location.state?.message;
 
   const handleSignIn = async (e) => {
   e.preventDefault();
