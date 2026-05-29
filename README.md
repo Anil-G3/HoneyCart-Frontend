@@ -13,7 +13,7 @@
 
 | | |
 |---|---|
-| 🖥️ Live App | *(add your deployed URL here)* |
+| 🖥️ Live App | https://honeycart-frontend.onrender.com/ |
 | ⚙️ Backend Repo | [HoneyCart-Backend](https://github.com/Anil-G3/HoneyCart-Backend) |
 
 ---
