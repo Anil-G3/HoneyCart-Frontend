@@ -1,3 +1,3 @@
-const API_BASE = 'https://honeycart-backend-k8fp.onrender.com';
+const API_BASE = 'https://honeycart-backend-4pjx.onrender.com';
 
 export default API_BASE;
