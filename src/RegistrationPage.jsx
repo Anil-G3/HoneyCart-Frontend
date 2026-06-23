@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import API_BASE from './api';
 
 export default function RegistrationPage() {
@@ -82,7 +82,7 @@ export default function RegistrationPage() {
               className="toggle-password-btn"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? <Eye /> : <EyeOff />}
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
             </button>
           </div>
           </div>
