@@ -7,6 +7,7 @@ export default function RegistrationPage() {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -64,15 +65,25 @@ export default function RegistrationPage() {
           </div>
           <div className="form-group">
             <label htmlFor="password" className="form-label">Password</label>
+          <div className="password-wrapper">
             <input
               id="password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="form-input"
+              className="form-input password-input"
             />
+
+            <button
+              type="button"
+              className="toggle-password-btn"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? '👁️' : '🙈'}
+            </button>
+          </div>
           </div>
           <div className="form-group">
             <label htmlFor="role" className="form-label">Role</label>
