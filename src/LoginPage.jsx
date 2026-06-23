@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Eye, EyeOff } from 'lucide-react';
 import API_BASE from './api';
 
 export default function LoginPage() {
@@ -94,7 +95,7 @@ const authMessage = location.state?.message;
                   className="toggle-password-btn"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? '👁️' : '🙈'}
+                  {showPassword ? <Eye /> : <EyeOff />}
                 </button>
               </div>
             </div>
